@@ -1,0 +1,7 @@
+<% if !current_user %>
+  <a href='/auth/rdio'>Login with rdio</a>
+<% else %>
+  <a href='/signout'>Sign out
+  <%= session[:user_name] %>
+  </a>
+<% end %>
