@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     session
   end
   def show
-    rdio = Rdio.new([ENV['RDIO_APP_KEY'], ENV['RDIO_APP_SECRET']],[ session[:token], session[:tokensecret]])
+    rdio = Rdio.new([ENV['RDIO_APP_KEY'], ENV['RDIO_APP_SECRET']])
     user = rdio.call('findUser', { vanityName: params[:user] })
     key = user['result']['key']
     puts "**KEY:"
