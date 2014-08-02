@@ -1,18 +1,35 @@
 <article>
-  <h2>Playlists</h2>
+  
+  <h1>Playlists</h1>
   <ul>
-  <% @playlists.each do |p| %>
-    <li><%= link_to p['name'], "http://www.rdio.com"+p["url"] %></li>
-  <% end %>
+    <% @playlists.each do |p| %>
+      <li class="list">
+        <div class="list-image">
+          <img src="" alt="" style="width: 30px; height: 30px; border: 1px solid #e1e1e1; border-radius: 3px; background-color: transparent;">
+        </div>
+        <div class="list-content">
+          <%= link_to p['name'], "http://www.rdio.com"+p["url"] %>
+        </div>
+      </li>
+    <% end %>
   </ul>
-  <h2>Friends</h2>
+
+  <h1>Friends</h1>
   <ul>
-  <% @friends.each do |f| %>
-    <li><%= link_to f['name'], f['url'].gsub('/people/','').gsub('/','') %></li>
-  <% end %>
+    <% @friends.each do |f| %>
+      <li class="list">
+        <div class="list-image">
+          <img src="" style="width: 30px; height: 30px; border: 1px solid #e1e1e1; border-radius: 3px; background-color: transparent;" alt="">
+        </div>
+        <div class="list-content">
+          <%= link_to f['name'], f['url'].gsub('/people/','').gsub('/','') %>
+        </div>
+      </li>
+    <% end %>
   </ul>
-  <a href='/signout'>Sign out
-  <%= session[:user_name] %>
+
+
+
 </article>
 
 <aside style="border: 1px solid #e1e1e1; padding: 20px; min-height: 300px;">

@@ -22,8 +22,8 @@
 .container { 
   @include outer-container;
 
-  aside { @include span-columns(4); }
-  article { @include span-columns(8); }
+  aside    { @include span-columns(4); @include pad(1em); }
+  article  { @include span-columns(8); @include pad(1em); }
 
 }
 
@@ -35,22 +35,22 @@
 
 header.navigation {
   $navigation-padding: 1em;
-  $navigation-background: $dark-gray;
-  $navigation-color: transparentize(white, 0.3);
-  $navigation-color-hover: white;
+  $navigation-background: white;
+  $navigation-color: transparentize(black, 0.3);
+  $navigation-color-hover: black;
   $navigation-height: 60px;
   $navigation-nav-button-background: $base-accent-color;
   $navigation-nav-button-background-hover: lighten($navigation-background, 10);
   $navigation-nav-button-border: 1px solid lighten($navigation-nav-button-background, 20);
   $navigation-search-background: lighten($navigation-background, 5);
   $navigation-search-border: 1px solid darken($navigation-background, 5);
-  $navigation-active-link-color: transparentize(white, 0.5);
+  $navigation-active-link-color: transparentize(black, 0.5);
   $navigation-submenu-padding: 1em;
   $navigation-submenu-width: 12em;
   $horizontal-bar-mode: $large-screen;
 
   background-color: $navigation-background;
-  border-bottom: 1px solid darken($navigation-background, 10);
+  border-bottom: 2px solid darken($navigation-background, 10);
   height: $navigation-height;
   width: 100%;
   z-index: 999;
@@ -159,8 +159,8 @@ header.navigation {
   }
 
   .active-nav-item a {
-    border-bottom: 1px solid $navigation-active-link-color;
-    padding-bottom: 3px;
+    border-bottom: 3px solid $navigation-active-link-color;
+    padding-bottom: 0;
   }
 
   // Sub menus
@@ -285,7 +285,7 @@ header.navigation {
     padding-right: $navigation-padding;
     padding-left: $navigation-padding/2;
     clear: both;
-    background: #505050;
+    background: #e1e1e1;
 
     @include media($large-screen) {
       background: transparent;
@@ -295,7 +295,7 @@ header.navigation {
   }
 
   a.sign-up {
-    margin-top: 1.2em;
+    margin: .5em 0;
     float: right;
     @include transition (all 0.2s ease-in-out);
     display: inline;
@@ -308,6 +308,7 @@ header.navigation {
     padding: .4em .5em;
 
     @include media($large-screen) {
+      margin-top: 1.2em;
       padding: .5em 1em;
     }
 
@@ -372,3 +373,170 @@ header.navigation {
     }
   }
 }
+
+
+
+
+
+
+
+
+
+.list {
+  $list-gutter: 1.4em;
+  $list-image-padding: .7em;
+  $list-image-width: 4em;
+  $list-color: $base-font-color;
+  $list-background: lighten($base-accent-color, 15);
+  $list-detail-color: transparentize($list-color, .5);
+  $list-image-vert-alignment: top;
+
+  display: table;
+  width: 100%;
+  margin-bottom: $base-line-height;
+  padding-bottom: 1em;
+  border-bottom: 1px solid transparentize($list-color, .9);
+
+  .list-image,
+  .list-content {
+    display: table-cell;
+    vertical-align: $list-image-vert-alignment;
+  }
+
+  .list-image {
+    padding-right: $list-gutter;
+
+    > img {
+      width: $list-image-width;
+      height: auto;
+      border-radius: $base-border-radius;
+      padding: $list-image-padding;
+      background: $list-background;
+      display: block;
+      max-width: none;
+    }
+
+    .list-reverse-order & {
+      padding-right: 0;
+      padding-left: 10px;
+    }
+  }
+
+  .list-content {
+    width: 100%;
+
+    h1 {
+      font-size: 1em;
+      margin-bottom: .5em;
+    }
+
+    p {
+      margin-bottom: .5em;
+    }
+
+    p.list-detail {
+      font-style: italic;
+      font-size: .9em;
+      color: $list-detail-color;
+    }
+  }
+}
+
+
+
+
+
+.footer-2 {
+  $footer-background: desaturate(darken($base-accent-color, 20), 30);
+  $footer-color: white;
+  $footer-link-color: transparentize($footer-color, .6);
+  $footer-disclaimer-color: transparentize($footer-color, .6);
+
+  background: $footer-background;
+  // padding: $base-line-height;
+  padding: 20px 10px;
+  width: 100%;
+
+  .footer-logo {
+    margin-right: 1em;
+    margin-bottom: 1em;
+
+    @include media($large-screen) {
+      float: left;
+      margin-bottom: 0;
+    }
+  }
+
+  .footer-logo img {
+    height: 1.6em;
+  } 
+
+  ul {
+    margin-bottom: 1em;
+    @include media($large-screen) {
+      float: left;
+      margin-left: 1em;
+      margin-bottom: 0;
+    }
+  }
+
+  ul li {
+    padding-right: 1em;
+    font-weight: 800;
+
+    @include media($large-screen) {
+      display: inline;
+      text-align: left;
+    }
+  }
+
+  ul li a {
+    color: $footer-link-color;
+
+    &:hover {
+      color: transparentize($footer-color, 0);
+    }
+  }
+
+  .footer-secondary-links {
+    @include media($large-screen) {
+      float: right;
+    }
+
+    li {
+      font-size: .8em;
+      font-weight: 400;
+    }
+
+    ul.footer-social {
+      margin-top: 1em;
+
+      @include media($large-screen) {
+        float: right;
+        margin-top: 0;
+      }
+
+      li {
+        float: left;
+        font-size: 1em;
+        padding-right: .7em;
+
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+
+      img {
+        opacity: .7;
+        height: 1.6em;
+        padding: 1px;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+
