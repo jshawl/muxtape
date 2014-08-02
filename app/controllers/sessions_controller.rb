@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     session[:token] = auth["credentials"]["token"]
     session[:tokensecret] = auth["credentials"]["secret"]
     session[:user_name] = auth["extra"]["raw_info"]["username"]
-    redirect_to '/', :notice => "Signed in!"
+    redirect_to '/'+ session[:user_name], :notice => "Signed in!"
   end
   def destroy
     session[:user_id] = nil

@@ -1,0 +1,8 @@
+<h2>Playlists</h2>
+<ul>
+<% @playlists.each do |p| %>
+  <li><%= link_to p['name'], "http://www.rdio.com"+p["url"] %></li>
+<% end %>
+</ul>
+<a href='/signout'>Sign out
+<%= session[:user_name] %>

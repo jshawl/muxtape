@@ -2,10 +2,14 @@ require 'rdio'
 class UsersController < ApplicationController
   def index
     session
-    rdio = Rdio.new([ENV['RDIO_APP_KEY'], ENV['RDIO_APP_SECRET']],[ session[:token], session[:tokensecret]])
-    @playlists = rdio.call('getPlaylists')["result"]["owned"]
   end
   def show
-    puts params.inspect
+    rdio = Rdio.new([ENV['RDIO_APP_KEY'], ENV['RDIO_APP_SECRET']],[ session[:token], session[:tokensecret]])
+    user = rdio.call('findUser', { vanityName: params[:user] })
+    key = user['result']['key']
+    puts "**KEY:"
+    puts key
+    @playlists = rdio.call('getUserPlaylists', {'user'=> key })
+    @playlists = @playlists["result"]
   end
 end
