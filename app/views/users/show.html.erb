@@ -4,5 +4,11 @@
   <li><%= link_to p['name'], "http://www.rdio.com"+p["url"] %></li>
 <% end %>
 </ul>
+<h2>Friends</h2>
+<ul>
+<% @friends.each do |f| %>
+  <li><%= link_to f['name'], f['url'].gsub('/people/','').gsub('/','') %></li>
+<% end %>
+</ul>
 <a href='/signout'>Sign out
 <%= session[:user_name] %>

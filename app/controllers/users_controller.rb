@@ -11,5 +11,7 @@ class UsersController < ApplicationController
     puts key
     @playlists = rdio.call('getUserPlaylists', {'user'=> key })
     @playlists = @playlists["result"]
+    @friends = rdio.call('userFollowing', {'user'=> key })
+    @friends = @friends["result"]
   end
 end
