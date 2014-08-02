@@ -9,7 +9,8 @@ gem 'omniauth-rdio'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 # Use sqlite3 as the database for Active Record
-gem 'pg'
+# gem 'pg'
+gem 'sqlite3'
 gem 'rails_12factor'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -19,6 +20,19 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
+
+# SASS Mixin Library
+gem 'bourbon'
+
+# SASS Grid System
+gem 'neat'
+
+# SASS Styleguide
+gem 'bitters'
+
+# Front-end Patterns
+gem 'refills'
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
